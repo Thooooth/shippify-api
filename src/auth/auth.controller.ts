@@ -3,6 +3,7 @@ import { AuthService } from './auth.service';
 import { AuthDto } from './dto/auth.dto';
 import { AuthGuard } from './auth.guard';
 import { Public } from './constants/constants';
+import { ApiExcludeEndpoint } from '@nestjs/swagger';
 
 @Controller('auth')
 export class AuthController {
@@ -17,6 +18,7 @@ export class AuthController {
 
   @UseGuards(AuthGuard)
   @Get('profile')
+  @ApiExcludeEndpoint()
   getProfile(@Request() req) {
     return req.user;
   }

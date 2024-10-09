@@ -8,12 +8,16 @@ dotenv.config();
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // Configuração do Swagger
   const options = new DocumentBuilder()
     .setTitle('Documentação com Swagger - Shippify')
     .setDescription('Documentação da API Shippify') 
     .setVersion('1.0')
-    .addBearerAuth({ type: 'http', scheme: 'bearer', bearerFormat: 'JWT' }, 'Authorization')
+    .addBearerAuth({
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT',
+        in: 'header',
+    }, 'Authorization') 
     .build();
 
   const document = SwaggerModule.createDocument(app, options);

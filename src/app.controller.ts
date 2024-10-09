@@ -6,6 +6,7 @@ import { AuthGuard } from '@nestjs/passport';
 export class ProtectedController {
     @UseGuards(AuthGuard('jwt'))
     @Get()
+    
     getProtectedResource() {
         return { message: 'This is a protected resource' };
     }

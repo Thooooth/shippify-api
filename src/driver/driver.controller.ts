@@ -2,11 +2,12 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@n
 import { DriverService } from './driver.service';
 import { CreateDriverDto } from './dto/create-driver.dto';
 import { UpdateDriverDto } from './dto/update-driver.dto';
-import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { ApiSecurity, ApiTags } from '@nestjs/swagger';
 
 
 @ApiTags('Driver')
 @Controller('driver')
+@ApiSecurity('Authorization')
 export class DriverController {
   constructor(private readonly driverService: DriverService) {}
 
